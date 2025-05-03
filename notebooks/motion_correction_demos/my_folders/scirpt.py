@@ -62,24 +62,18 @@ for i in range(0, N, bs):
     print(i)
     # break
 
-#%%
-# import numpy as np
-# out_data= np.memmap("temp.npy", dtype = np.uint16, mode = "r+")
 
 #%%
 import napari 
 #%%
+mylims = (190,200+4*25)
 viewer = napari.Viewer()
-viewer.add_image(data2, name = "raw", colormap = "blue", blending="additive")
-viewer.add_image(out_data, name = "moco", colormap = "green", blending="additive")
-viewer.add_image(out_data.mean(axis=0), name = "mean", colormap = "red",blending="additive")
+viewer.add_image(data2, name = "raw", colormap = "red", blending="additive",contrast_limits=mylims)
+viewer.add_image(out_data, name = "moco", colormap = "green", blending="additive",contrast_limits=mylims)
+viewer.add_image(out_data.mean(axis=0), name = "mean", colormap = "blue",blending="additive",contrast_limits=mylims)
 
-#%%
 viewer.show()
-# %%
-# iw = fpl.ImageWidget(data = [data, moco_results])
-# iw.cmap = "gray"
-# iw.show()
+
 
 
 # %%
